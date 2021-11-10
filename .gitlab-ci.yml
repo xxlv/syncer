@@ -1,0 +1,4 @@
+include:
+  - project: "arch-foundation/cicd"
+    ref: workspace
+    file: "/templates/Maven.gitlab-ci.yml"

@@ -1,0 +1,42 @@
+@startuml
+
+class Syner{
+  + name
+  --
+  + dispatchAll()
+}
+class SyncerData<T>{
+    T data;
+}
+
+class DataAdapter<R1,R2>{
+   R2 to(R1 q);
+}
+
+class SyncRuleApi{
+  DataSupplier dataSupplier;
+  DataConsumer dataConsumer;
+
+  --
+  + execute()
+}
+
+
+class DataConsumer{
+  + accept(T data)
+
+  + SyncerData dataAdepter()
+}
+
+class DataSupplier{
+  + get()
+}
+
+
+Syner->SyncRuleApi:dispatch
+SyncRuleApi-->DataSupplier: need
+SyncRuleApi-->DataConsumer: need
+DataConsumer.->SyncerData: use
+SyncerData->DataAdapter: use
+
+@enduml

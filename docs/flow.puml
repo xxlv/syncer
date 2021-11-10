@@ -1,0 +1,13 @@
+@startuml
+
+state Syner{
+  [*]->FlowSPI: load spis
+
+  FlowSPI->DataSupplier: include
+  FlowSPI->DataConsumer: include
+  FlowSPI-->run: execute
+
+  DataConsumer-->DataSupplier: accept
+}
+
+@enduml
